@@ -20,7 +20,7 @@ const LeaveLog = () => {
         }
   
         // Fetch leave applications from the server
-        const response = await axios.get(`http://localhost:5000/leave/getLeaveApplications/${employeeId}`);
+        const response = await axios.get(`https://hrm-deployed.vercel.app//leave/getLeaveApplications/${employeeId}`);
         const formattedData = response.data.map(item => ({
           leaveType: item.type,
           from: new Date(item.start).toLocaleDateString(),

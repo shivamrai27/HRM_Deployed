@@ -16,7 +16,7 @@ import isAuthenticated from "./middleware/isAuthencticated.js"
 const app = express();
 app.use(express.json());
 app.use(cookieParser()); // To parse cookies
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000', 'https://hrm-deployed-9hq5.vercel.app'];
 
 app.use(cors({
   origin: (origin, callback) => {

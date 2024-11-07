@@ -19,7 +19,7 @@ const AttendanceTable = () => {
       setError(null);
       const limit = 10;
       const skip = page * limit;
-      const response = await axios.get(`http://localhost:5000/attendance?limit=${limit}&skip=${skip}`, {
+      const response = await axios.get(`https://hrm-deployed.vercel.app//attendance?limit=${limit}&skip=${skip}`, {
         withCredentials: true,
       });
 

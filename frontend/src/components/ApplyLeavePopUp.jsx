@@ -69,7 +69,7 @@ const ApplyLeavePopup = ({ isOpen, onClose }) => {
       if (!userData || !userData._id) {
         throw new Error('User ID not found in local storage');
       }
-      const response = await axios.get(`http://localhost:5000/leave/remaining/${userData._id}`);
+      const response = await axios.get(`https://hrm-deployed.vercel.app//leave/remaining/${userData._id}`);
       setAvailableLeaves({
         casual: response.data.casualLeave || 0,
         sick: response.data.sickLeave || 0,
@@ -100,7 +100,7 @@ const ApplyLeavePopup = ({ isOpen, onClose }) => {
     console.log(leaveData);
 
     try {
-      const response = await axios.post('http://localhost:5000/leave/applyLeave', leaveData);
+      const response = await axios.post('https://hrm-deployed.vercel.app//leave/applyLeave', leaveData);
       alert('Leave applied successfully!');
       setAvailableLeaves(response.data.newAvailableLeaves);
       onClose();
