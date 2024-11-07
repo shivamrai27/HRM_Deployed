@@ -9,7 +9,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    axios.post('https://hrm-deployed.vercel.app//employee/login', { email, password }, { withCredentials: true })
+    axios.post('https://hrm-deployed.vercel.app/employee/login', { email, password }, { withCredentials: true })
       .then(result => {
         console.log(result);
         if (result.data && result.data.user) {

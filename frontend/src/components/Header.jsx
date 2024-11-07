@@ -80,8 +80,8 @@ const Header = () => {
           onClose={handleClockPopupClose}
           endpoint={
             isClockedIn
-              ? "https://hrm-deployed.vercel.app//checkout"
-              : "https://hrm-deployed.vercel.app//checkin"
+              ? "https://hrm-deployed.vercel.app/checkout"
+              : "https://hrm-deployed.vercel.app/checkin"
           }
           title={isClockedIn ? "Clock Out" : "Clock In"}
           onSuccess={handleSuccess}
