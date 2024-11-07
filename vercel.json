@@ -1,5 +1,0 @@
-{
-    "cors": {
-      "allowedOrigins": ["https://hrm-deployed-9hq5.vercel.app", "https://hrm-deployed.vercel.app"]
-    }
-  }
