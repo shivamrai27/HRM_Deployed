@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import SelfieCapturePopup from "../components/SelfieCapturePopup.jsx";
-import ApplyLeavePopup from "../components/ApplyLeavePopup.jsx";
+import SelfieCapturePopup from "./SelfieCapturePopup.jsx";
+import ApplyLeavePopup from "./ApplyLeavePopUp.jsx";
 
 const Header = () => {
   const [isClockedIn, setIsClockedIn] = useState(false);
