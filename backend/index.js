@@ -4,6 +4,7 @@ import cors from "cors";
 import "dotenv/config";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import helmet from "helmet"
 import cookieParser from 'cookie-parser';
 import { Employee } from "./model/Employee_model.js";
 import employeeRoute from "./routes/employee.route.js"
@@ -15,6 +16,7 @@ import isAuthenticated from "./middleware/isAuthencticated.js"
 // import { applyLeave } from "./controller/applyLeave.js";
 const app = express();
 app.use(express.json());
+app.use(helmet());
 app.use(cookieParser()); // To parse cookies
 // Step 1: Define allowed origins
 const allowedOrigins = [
