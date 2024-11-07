@@ -19,20 +19,13 @@ app.use(cookieParser()); // To parse cookies
 // Step 1: Define allowed origins
 const allowedOrigins = [
   'http://localhost:3000', 
-  'https://hrm-deployed-9hq5.vercel.app', 
-  'https://hrm-deployed.vercel.app', 
+
   'https://hrm-deployed-selt.vercel.app'
 ];
 
 // Step 2: Set up CORS with options and preflight handling
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: 'https://hrm-deployed-selt.vercel.app',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
