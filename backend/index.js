@@ -16,8 +16,15 @@ import isAuthenticated from "./middleware/isAuthencticated.js"
 const app = express();
 app.use(express.json());
 app.use(cookieParser()); // To parse cookies
-const allowedOrigins = ['http://localhost:3000', 'https://hrm-deployed-9hq5.vercel.app', 'https://hrm-deployed.vercel.app', 'https://hrm-deployed-selt.vercel.app'];
+// Step 1: Define allowed origins
+const allowedOrigins = [
+  'http://localhost:3000', 
+  'https://hrm-deployed-9hq5.vercel.app', 
+  'https://hrm-deployed.vercel.app', 
+  'https://hrm-deployed-selt.vercel.app'
+];
 
+// Step 2: Set up CORS with options and preflight handling
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -26,10 +33,23 @@ app.use(cors({
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true ,
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],// Allow credentials (cookies, authorization headers)
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+// Step 3: Handle OPTIONS requests for preflight
+app.options('*', cors()); // This allows the server to respond to preflight requests
+
+// Step 4: Additional headers setup (optional, for more control over all responses)
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 connectDb();
 
 app.get("/", (req, res) => {
