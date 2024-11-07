@@ -1,0 +1,84 @@
+# Ignore node_modules in both backend and frontend
+backend/node_modules/
+frontend/node_modules/
+
+# Ignore environment variable files in both backend and frontend
+backend/.env
+frontend/.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore build files in frontend (React)
+frontend/build/
+
+# Ignore dist folder in backend (if you have a build step)
+backend/dist/
+
+# Ignore coverage reports from test runners (e.g., Jest, Mocha)
+coverage/
+
+# Ignore IDE or editor-specific files
+.vscode/
+.idea/
+*.swp
+
+# Ignore yarn.lock and package-lock.json if you prefer one package manager (optional)
+# If you're using yarn:
+package-lock.json
+# If you're using npm:
+yarn.lock
+
+# Ignore specific backend files
+backend/.cache/
+backend/debug.log
+
+# Ignore compiled or transpiled files
+frontend/.next/         # If you're using Next.js
+frontend/out/           # Next.js production build folder
+
+# Ignore public/static files that are generated
+frontend/public/static/
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore Mac and Linux system files
+*.sublime-workspace
+*.sublime-project
+*.swo
+*.swp
+
+# Ignore any temporary React state files (if you use hot module reloading)
+frontend/.webpack/
+
+# Ignore dotenv files that contain sensitive environment variables
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# Ignore test output files (optional)
+backend/coverage/
+frontend/coverage/
+
+# Ignore ESLint/Prettier cache
+frontend/.eslintcache
+backend/.eslintcache
+
+# Ignore any generated docs
+docs/
+
+# Ignore static types (optional if you're using TypeScript)
+frontend/.next/
+frontend/*.d.ts
+backend/*.d.ts
