@@ -28,7 +28,7 @@ const allowedOrigins = [
 
 // Step 2: Set up CORS with options and preflight handling
 app.use(cors({
-  origin: 'https://hrm-deployed-selt.vercel.app',
+  origin: true,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
