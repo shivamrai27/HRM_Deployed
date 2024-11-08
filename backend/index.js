@@ -1,5 +1,6 @@
 import express from "express";
 import { connectDb } from "./config/config.js";
+// @ts-ignore
 import cors from "cors";
 import "dotenv/config";
 import bcrypt from "bcryptjs";
