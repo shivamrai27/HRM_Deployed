@@ -27,7 +27,7 @@ app.use(cookieParser()); // To parse cookies
 app.use(cors({
   origin: ['http://localhost:3000', 'https://hrmfrontend-bay.vercel.app'],
   // credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+
   // allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
@@ -210,7 +210,7 @@ app.get("/attendance", isAuthenticated, async (req, res) => {
         success: false,
       });
     }
-  });
+});
   // app.post("/login",  async (req, res) => {
     
   //   try {
