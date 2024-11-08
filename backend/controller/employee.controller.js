@@ -93,6 +93,7 @@ export const registerEmployee = async (req, res) => {
           maxAge: 1 * 24 * 60 * 60 * 1000,
           httpsOnly: true,
           sameSite: "strict",
+          secure: true
         })
         .json({
           message: `Welcome back ${user.name}`,
