@@ -18,6 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(cookieParser()); // To parse cookies
+
 // Step 1: Define allowed origins
 const allowedOrigins = [
   'http://localhost:3000', 
@@ -57,6 +58,7 @@ app.use('/employee', employeeRoute)
 //Leave routes
 app.use('/leave', leaveroute);
 
+// CheckIn controller
 app.post("/checkin", isAuthenticated, async (req, res) => {
     try {
         const { photoUrl, location } = req.body;
@@ -101,8 +103,6 @@ app.post("/checkin", isAuthenticated, async (req, res) => {
         });
     }
 });
-
-
 
 // Checkout controller
 app.post("/checkout", isAuthenticated, async (req, res) => {
@@ -162,8 +162,6 @@ app.post("/checkout", isAuthenticated, async (req, res) => {
     }
 });
 
-
-
 // Attendance GET Endpoint
 app.get("/attendance", isAuthenticated, async (req, res) => {
     try {
@@ -216,62 +214,62 @@ app.get("/attendance", isAuthenticated, async (req, res) => {
       });
     }
   });
-  app.post("/login",  async (req, res) => {
+  // app.post("/login",  async (req, res) => {
     
-    try {
-      const { email, password } = req.body;
+  //   try {
+  //     const { email, password } = req.body;
   
-      if (!email || !password) {
-        return res.status(400).json({
-          message: "Something is missing",
-          success: false,
-        });
-      }
-      let user = await Employee.findOne({ email });
-      console.log(user);
-      if (!user) {
-        return res.status(400).json({
-          message: "Incorrect email or password.",
-          success: false,
-        });
-      }
-      const isPasswordMatch = await bcrypt.compare(password, user.password);
-      if (!isPasswordMatch) {
-        return res.status(400).json({
-          message: "Incorrect email or password.",
-          success: false,
-        });
-      } 
+  //     if (!email || !password) {
+  //       return res.status(400).json({
+  //         message: "Something is missing",
+  //         success: false,
+  //       });
+  //     }
+  //     let user = await Employee.findOne({ email });
+  //     console.log(user);
+  //     if (!user) {
+  //       return res.status(400).json({
+  //         message: "Incorrect email or password.",
+  //         success: false,
+  //       });
+  //     }
+  //     const isPasswordMatch = await bcrypt.compare(password, user.password);
+  //     if (!isPasswordMatch) {
+  //       return res.status(400).json({
+  //         message: "Incorrect email or password.",
+  //         success: false,
+  //       });
+  //     } 
   
-      const tokenData = {
-        userId: user._id,
-      };
-      const token = await jwt.sign(tokenData, process.env.SECRET_KEY, {
-        expiresIn: "1d",
-      });
+  //     const tokenData = {
+  //       userId: user._id,
+  //     };
+  //     const token = await jwt.sign(tokenData, process.env.SECRET_KEY, {
+  //       expiresIn: "1d",
+  //     });
   
-      user = {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      };
+  //     user = {
+  //       _id: user._id,
+  //       name: user.name,
+  //       email: user.email,
+  //     };
   
-      return res
-        .status(200)
-        .set('Access-Control-Allow-Origin', 'https://hrm-deployed-selt.vercel.app')
-        .cookie("token", token, {
-          maxAge: 1 * 24 * 60 * 60 * 1000,
-          httpsOnly: true,
-          sameSite: "strict",
-        })
-        .json({
-          message: `Welcome back ${user.name}`,
-          user,
-          success: true,
-        });
-    } catch (error) {
-      console.log(error);
-    }});
+  //     return res
+  //       .status(200)
+  //       .set('Access-Control-Allow-Origin', 'https://hrm-deployed-selt.vercel.app')
+  //       .cookie("token", token, {
+  //         maxAge: 1 * 24 * 60 * 60 * 1000,
+  //         httpsOnly: true,
+  //         sameSite: "strict",
+  //       })
+  //       .json({
+  //         message: `Welcome back ${user.name}`,
+  //         user,
+  //         success: true,
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  // }});
 
 
 app.listen(process.env.PORT, () => {
