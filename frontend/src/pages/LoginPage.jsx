@@ -11,7 +11,7 @@ function LoginPage() {
   const handleSubmit = (event) => {
     event.preventDefault();  // Prevents default form submit behavior
     axios
-      .post('https://hrm-deployed.vercel.app/employee/login', { email, password }, { withCredentials: true })
+      .post('https://hrm-deployed.vercel.app/employee/login', { email, password })
       .then((result) => {
         console.log(result);
         if (result.data && result.data.user) {

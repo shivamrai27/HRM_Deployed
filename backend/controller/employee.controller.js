@@ -88,7 +88,7 @@ export const registerEmployee = async (req, res) => {
   
       return res
         .status(200)
-        .set('Access-Control-Allow-Origin', 'https://hrm-deployed-selt.vercel.app')
+        // .set('Access-Control-Allow-Origin', 'https://hrm-deployed-selt.vercel.app')
         .cookie("token", token, {
           maxAge: 1 * 24 * 60 * 60 * 1000,
           httpsOnly: true,
